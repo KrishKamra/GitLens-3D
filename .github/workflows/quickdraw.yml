@@ -1,0 +1,14 @@
+name: Quickdraw Achievement
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  fast_close:
+    runs-on: ubuntu-latest
+    if: github.event.issue.title == 'ACHIEVE_QUICKDRAW'
+    steps:
+      - name: Close Issue Instantly
+        run: gh issue close ${{ github.event.issue.number }} --comment "Quickdraw badge earned. 🤠"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
